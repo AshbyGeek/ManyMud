@@ -1,5 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ManyMud.Models;
+using ManyMud.Common.Models;
 using System.Threading;
 
 namespace ManyMud.Tests
@@ -16,7 +16,7 @@ namespace ManyMud.Tests
         [TestInitialize]
         public void TestSetup()
         {
-            const string ServerHostName = "192.168.1.14";
+            const string ServerHostName = "demo.portainer.io";
             const int ServerPort = 5672;
             receiver1 = new Messenger(ServerHostName, ServerPort, "Test");
             receiver2 = new Messenger(ServerHostName, ServerPort, "Test");

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ManyMud.Interfaces
 {
-    interface IMessenger : IDisposable
+    public interface IMessenger : IDisposable
     {
         event EventHandler<string> MessageReceived;
 

@@ -6,8 +6,11 @@ using ManyMud.Interfaces;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
-namespace ManyMud.Models
+namespace ManyMud.Common.Models
 {
+    /// <summary>
+    /// Establishes a connection to the communication server
+    /// </summary>
     public class Messenger : IMessenger
     {
         private readonly IConnection _connection;
@@ -17,6 +20,8 @@ namespace ManyMud.Models
         private readonly string _queueName;
         private readonly Queue<byte[]> _ignoreMessages = new Queue<byte[]>();
         private readonly object _ignoreMessageLock = new object();
+
+        public Messenger(GameHost host, string playerName) : this(host.Hostname, host.Port, $"{host.GameName}.{playerName}") { }
 
         public Messenger(string hostName, int port, string msgBoxName)
         {
