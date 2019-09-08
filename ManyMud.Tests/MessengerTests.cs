@@ -16,7 +16,7 @@ namespace ManyMud.Tests
         [TestInitialize]
         public void TestSetup()
         {
-            const string ServerHostName = "demo.portainer.io";
+            const string ServerHostName = "ashbygeek.ddns.net";
             const int ServerPort = 5672;
             receiver1 = new Messenger(ServerHostName, ServerPort, "Test");
             receiver2 = new Messenger(ServerHostName, ServerPort, "Test");

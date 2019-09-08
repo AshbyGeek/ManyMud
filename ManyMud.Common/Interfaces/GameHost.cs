@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ManyMud.Common.Models
+namespace ManyMud.Common.Interfaces
 {
     public struct GameHost
     {

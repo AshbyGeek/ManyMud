@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ManyMud.Interfaces;
+using ManyMud.Common.Interfaces;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
@@ -17,15 +17,15 @@ namespace ManyMud.Common.Models
         private readonly IModel _channel;
         private readonly EventingBasicConsumer _consumer;
 
-        private readonly string _queueName;
         private readonly Queue<byte[]> _ignoreMessages = new Queue<byte[]>();
         private readonly object _ignoreMessageLock = new object();
 
-        public Messenger(GameHost host, string playerName) : this(host.Hostname, host.Port, $"{host.GameName}.{playerName}") { }
+        public string MessageBox { get; }
+
 
         public Messenger(string hostName, int port, string msgBoxName)
         {
-            _queueName = msgBoxName;
+            MessageBox = msgBoxName;
 
             var factory = new ConnectionFactory()
             {
@@ -37,11 +37,11 @@ namespace ManyMud.Common.Models
             _channel = _connection.CreateModel();
 
             // Create an exchange that passes new messages to all connected queues
-            _channel.ExchangeDeclare(msgBoxName, "fanout");
+            _channel.ExchangeDeclare(MessageBox, "fanout");
 
             // Create a queue with a random name and tell the exchange to pass messages to it
             var tmpName = _channel.QueueDeclare().QueueName;
-            _channel.QueueBind(tmpName, msgBoxName, "");
+            _channel.QueueBind(tmpName, MessageBox, "");
 
             _consumer = new EventingBasicConsumer(_channel);
             _consumer.Received += (model, e) =>
@@ -73,7 +73,7 @@ namespace ManyMud.Common.Models
             if (_disposed) throw new ObjectDisposedException(nameof(Messenger));
 
             var msg = Encode(message);
-            _channel.BasicPublish(exchange: _queueName,
+            _channel.BasicPublish(exchange: MessageBox,
                                   routingKey: "",
                                   basicProperties: null,
                                   body: msg);

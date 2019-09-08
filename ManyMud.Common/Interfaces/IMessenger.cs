@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ManyMud.Interfaces
+namespace ManyMud.Common.Interfaces
 {
     public interface IMessenger : IDisposable
     {
+        string MessageBox { get; }
+
         event EventHandler<string> MessageReceived;
 
         void Send(string message);
