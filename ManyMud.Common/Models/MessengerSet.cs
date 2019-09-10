@@ -6,14 +6,14 @@ using System.Text;
 
 namespace ManyMud.Common.Models
 {
-    public class PlayerMessengerSet : IPlayerMessengerSet
+    public class MessengerSet : IMessengerSet
     {
         public event EventHandler<IMessenger> PlayerAdded;
         public event EventHandler<IMessenger> PlayerRemoved;
 
         public string LocalPlayerName { get; }
 
-        public PlayerMessengerSet(GameHost host, IMessenger serverCommands, IMessenger serverBroadcast, IMessenger localPlayer, string localPlayerName)
+        public MessengerSet(GameHost host, IMessenger serverCommands, IMessenger serverBroadcast, IMessenger localPlayer, string localPlayerName)
         {
             Host = host;
             ServerCommands = serverCommands;

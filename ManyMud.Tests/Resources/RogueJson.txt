@@ -1,0 +1,7 @@
+{
+    "obj": {
+        "$type": "System.IO.FileInfo, System.IO.FileSystem",
+        "fileName": "rce-test.txt",
+        "IsReadOnly": true
+    }
+}

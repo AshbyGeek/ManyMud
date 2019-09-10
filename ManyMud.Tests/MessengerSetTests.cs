@@ -10,7 +10,7 @@ using System.Text;
 namespace ManyMud.Tests
 {
     [TestClass]
-    public class PlayerMessengerSetTests
+    public class MessengerSetTests
     {
         private static GameHost Host = new GameHost("localhost", 5672, "test");
 
@@ -21,7 +21,7 @@ namespace ManyMud.Tests
             var moqBroadcast = new Mock<IMessenger>();
             var moqCommand = new Mock<IMessenger>();
             var moqUser = new Mock<IMessenger>();
-            var set = new PlayerMessengerSet(Host, moqCommand.Object, moqBroadcast.Object, moqUser.Object, "TestUser");
+            var set = new MessengerSet(Host, moqCommand.Object, moqBroadcast.Object, moqUser.Object, "TestUser");
 
             var moqOtherUser = new Mock<IMessenger>();
 
@@ -40,7 +40,7 @@ namespace ManyMud.Tests
             var moqBroadcast = new Mock<IMessenger>();
             var moqCommand = new Mock<IMessenger>();
             var moqUser = new Mock<IMessenger>();
-            var set = new PlayerMessengerSet(Host, moqCommand.Object, moqBroadcast.Object, moqUser.Object, "TestUser");
+            var set = new MessengerSet(Host, moqCommand.Object, moqBroadcast.Object, moqUser.Object, "TestUser");
 
             var moqOtherUser = new Mock<IMessenger>();
             set.OtherPlayers.Add(moqOtherUser.Object);

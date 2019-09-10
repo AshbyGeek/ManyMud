@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ManyMud.Tests.Mocks
 {
-    public class MockPlayerMessengerSet : Mock<IPlayerMessengerSet>
+    public class MockPlayerMessengerSet : Mock<IMessengerSet>
     {
         public GameHost Host { get; } = new GameHost("localhost", 5672, "Test");
 

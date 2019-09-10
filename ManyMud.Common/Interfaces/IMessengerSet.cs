@@ -4,7 +4,7 @@ using ManyMud.Common.Interfaces;
 
 namespace ManyMud.Common.Interfaces
 {
-    public interface IPlayerMessengerSet
+    public interface IMessengerSet
     {
         GameHost Host { get; }
         string LocalPlayerName { get; }

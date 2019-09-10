@@ -12,12 +12,12 @@ namespace ManyMud.Common.Logic
     {
         public IGameResolver CreateGameResolver() => new GameResolver();
 
-        public IPlayerMessengerSet CreatePlayerMessengerSet(GameHost host, string playerName)
+        public IMessengerSet CreatePlayerMessengerSet(GameHost host, string playerName)
         {
             IMessenger serverBroadcastMsgr = CreateMessenger(host, "broadcast");
             IMessenger serverCommandsMsgr = CreateMessenger(host, "command");
             IMessenger localPlayerMsgr = CreateMessenger(host, playerName);
-            return new PlayerMessengerSet(host, serverCommandsMsgr, serverBroadcastMsgr, localPlayerMsgr, playerName);
+            return new MessengerSet(host, serverCommandsMsgr, serverBroadcastMsgr, localPlayerMsgr, playerName);
         }
 
         public IMessenger CreateMessenger(GameHost host, string playerName)
@@ -30,7 +30,7 @@ namespace ManyMud.Common.Logic
             return new Messenger(hostname, port, messageBox);
         }
 
-        public object CreateCommandHandler(IPlayerMessengerSet messengerSet, ICommandSerializer serializer) => new ServerCommandHandler(this, messengerSet, serializer);
+        public object CreateCommandHandler(IMessengerSet messengerSet, ICommandSerializer serializer) => new ServerCommandHandler(this, messengerSet, serializer);
 
         private static string MsgBoxName(string gameName, string playerName) => $"{gameName}.{playerName}";
     }

@@ -10,7 +10,7 @@ namespace ManyMud.Common.Logic
     public class Client
     {
         public IFactory Factory;
-        public IPlayerMessengerSet MessengerSet;
+        public IMessengerSet MessengerSet;
         public ICommandSerializer Serializer;
 
         public Client(GameHost host, string playerName, IFactory factory, ICommandSerializer serializer)

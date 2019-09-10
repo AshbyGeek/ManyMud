@@ -10,7 +10,7 @@ namespace ManyMud.Common.Logic
     public class Server
     {
         public IFactory Factory;
-        public IPlayerMessengerSet MessengerSet;
+        public IMessengerSet MessengerSet;
         public readonly Dictionary<string, IMessenger> Players = new Dictionary<string, IMessenger>();
 
         public Server(GameHost host, IFactory factory, ICommandSerializer serializer)

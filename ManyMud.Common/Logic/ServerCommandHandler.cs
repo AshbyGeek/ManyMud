@@ -9,11 +9,11 @@ namespace ManyMud.Common.Logic
 {
     public class ServerCommandHandler
     {
-        public IPlayerMessengerSet MessengerSet { get; }
+        public IMessengerSet MessengerSet { get; }
         public ICommandSerializer Serializer { get; }
         public IFactory Factory { get; }
 
-        public ServerCommandHandler(IFactory factory, IPlayerMessengerSet messengerSet, ICommandSerializer serializer)
+        public ServerCommandHandler(IFactory factory, IMessengerSet messengerSet, ICommandSerializer serializer)
         {
             Factory = factory;
             MessengerSet = messengerSet;

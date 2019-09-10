@@ -10,8 +10,8 @@ namespace ManyMud.Common.Interfaces
 
         IMessenger CreateMessenger(GameHost host, string playerName);
 
-        IPlayerMessengerSet CreatePlayerMessengerSet(GameHost host, string playerName);
+        IMessengerSet CreatePlayerMessengerSet(GameHost host, string playerName);
 
-        object CreateCommandHandler(IPlayerMessengerSet messengerSet, ICommandSerializer serializer);
+        object CreateCommandHandler(IMessengerSet messengerSet, ICommandSerializer serializer);
     }
 }
